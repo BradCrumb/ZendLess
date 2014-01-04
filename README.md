@@ -13,9 +13,11 @@ The master branch has the following requirements:
 
 * Clone/Copy the files in your application's module directory
     * When you don't have a module directory, create a module directory, for example in APPLICATION_PATH/modules and update the configuration file.
+    ```
     ie. for application.ini as a configuration file we would use
     resources.frontController.moduleDirectory = APPLICATION_PATH "/modules"
     resources.modules[] = ""
+    ```
 * The Less module will run immediately.
 
 ## Documentation

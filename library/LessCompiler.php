@@ -1,8 +1,27 @@
 <?php
-require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendors' . DIRECTORY_SEPARATOR . 'lessphp' . DIRECTORY_SEPARATOR . 'lessc.inc.php');
+require_once(LESS_MODULE_VENDOR_PATH . 'lessphp' . DIRECTORY_SEPARATOR . 'lessc.inc.php');
 
+/**
+ * LessCompiler
+ * ===
+ *
+ * Extended class of the original LessPHP lessc.
+ * With some specific adjustments
+ *
+ * @author Patrick Langendoen <github-bradcrumb@patricklangendoen.nl>
+ * @author Marc-Jan Barnhoorn <github-bradcrumb@marc-jan.nl>
+ * @copyright 2014 (c), Patrick Langendoen & Marc-Jan Barnhoorn
+ * @license http://opensource.org/licenses/GPL-3.0 GNU GENERAL PUBLIC LICENSE
+ * @todo add php-functions to the lessc configuration
+ */
 class Less_Library_LessCompiler extends lessc
 {
+/**
+ * Check if a (re)compile is needed
+ * @param  array $in
+ * @param  boolean $force
+ * @return array or null
+ */
     public function cachedCompile($in, $force = false)
     {
         // asume no root

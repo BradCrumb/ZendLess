@@ -1,6 +1,7 @@
 <?php
 /**
  * LessCompiler Component
+ * ===
  *
  * @author Patrick Langendoen <github-bradcrumb@patricklangendoen.nl>
  * @author Marc-Jan Barnhoorn <github-bradcrumb@marc-jan.nl>
@@ -190,7 +191,7 @@ class Less_Library_LessCompilerComponent
             (defined('APPLICATION_ENV') && 'production' !== APPLICATION_ENV) ||
             $this->settings['autoRun'] ||
             $this->settings['forceCompiling'] ||
-            ($cache = $this->cache->load($cacheKey)) === false;
+            ($this->cache->load($cacheKey)) === false;
 
         if ($this->enabled && $optionalConditions) {
             foreach ($this->_lessFolders as $key => $lessFolder) {
@@ -208,7 +209,7 @@ class Less_Library_LessCompilerComponent
                     $lessFile = $file->getRealPath();
                     $cssFile = $this->_cssFolders[$key] . $file->getBasename('.less') . '.css';
 
-                    if ($this->_autoCompileLess($lessFile, $cssFile, $lessFolder)) {
+                    if ($this->_autoCompileLess($lessFile, $cssFile)) {
                         $generatedFiles[] = $cssFile;
                     }
                 }
@@ -220,7 +221,7 @@ class Less_Library_LessCompilerComponent
         return $generatedFiles;
     }
 
-    protected function _autoCompileLess($inputFile, $outputFile, $lessFolder)
+    protected function _autoCompileLess($inputFile, $outputFile)
     {
         $cacheKey = md5(DIRECTORY_SEPARATOR . __CLASS__ . str_replace(APPLICATION_PATH, null, $outputFile));
 
