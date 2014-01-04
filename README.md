@@ -38,6 +38,7 @@ After that time the cache expires and after a new request the component will che
 
 The Less module has a couple of settings that can be set in your `application.ini`:
 
+    Less.autoCompile = true                         // Autocompile Less files on bootstrap
     Less.sourceFolder = null                        // Where to look for Less files (Default: APPLICATION_PATH/less)
     Less.targetFolder = null                        // Where to put the generated css (Default: DOCUMENT_ROOT/css)
     Less.formatter = 'compressed'                   // lessphp compatible formatter
@@ -45,6 +46,8 @@ The Less module has a couple of settings that can be set in your `application.in
     Less.forceCompiling = false                     // Always recompile Less files
     Less.autoRun = false                            // Check if compilation is necessary, this ignores the CakePHP Debug setting
     Less.cache.frontendOptions.lifetime = 14400     // Cache lifetime (Default: 4 hours)
+
+By default the Component autocompiles less files. You can disable this by setting `Less.autoCompile` to `false`. You can now control the compiling proces by yourself, by using the Component of Compiler in your own code.
 
 ## License
 GNU General Public License, version 3 (GPL-3.0)

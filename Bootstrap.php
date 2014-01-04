@@ -22,7 +22,11 @@ class Less_Bootstrap extends Zend_Application_Module_Bootstrap
 
     protected function _initCompileLessFiles()
     {
-        $compilerInstance = new Less_Library_LessCompilerComponent($this->getOptions());
-        $compilerInstance->generateCss();
+        $options = $this->getOptions();
+
+        if (!isset($options['autoCompile']) || $options['autoCompile']) {
+            $compilerInstance = new Less_Library_LessCompilerComponent($this->getOptions());
+            $compilerInstance->generateCss();
+        }
     }
 }
